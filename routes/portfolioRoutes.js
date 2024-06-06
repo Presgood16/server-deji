@@ -1,6 +1,6 @@
 import express from "express";
 import asyncHandler from "express-async-handler";
-import { protect, admin } from "../middleware/authMiddleware.js";
+import { protect, admin } from "../middleware/authmiddleware.js";
 import Portfolio from "./../models/portfolioModel.js";
 import multer from "multer";
 
