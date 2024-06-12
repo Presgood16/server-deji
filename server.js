@@ -22,7 +22,6 @@ const __dirname = path.dirname(__filename);
 app.use("/api/import", ImportData);
 app.use("/api/users", userRouter);
 app.use("/api/portfolio", portfolioRouter);
-app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 //Error handler
 app.use(notFound);
