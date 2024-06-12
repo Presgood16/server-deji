@@ -1,22 +1,11 @@
 import express from "express";
 import asyncHandler from "express-async-handler";
-import { protect, admin } from "../middleware/authmiddleware.js";
+import { protect, admin } from "../middleware/authMiddleware.js";
 import Portfolio from "./../models/portfolioModel.js";
-import multer from "multer";
+import { upload } from "../config/cloudinary.js";
 
 
 const portfolioRouter = express.Router();
-
-const storage = multer.diskStorage({
-  destination(req, file, cb) {
-    cb(null, 'uploads/'); // Upload files to the 'uploads' directory
-  },
-  filename(req, file, cb) {
-    cb(null, `${Date.now()}-${file.originalname}`);
-  }
-});
-
-const upload = multer({ storage });
 
 // GET ALL PORTFOLIO
 portfolioRouter.get(
@@ -103,7 +92,7 @@ portfolioRouter.put(
     "/:id",
     protect,
     admin,
-    upload.array('pictures', 10),
+    upload.array('pictures', 30),
     asyncHandler(async (req, res) => {
       const { title, category } = req.body;
       const newPictures = req.files.map(file => file.path);
