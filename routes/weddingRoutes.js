@@ -1,6 +1,6 @@
 import express from "express";
 import asyncHandler from "express-async-handler";
-import { protect, admin } from "../middleware/authMiddleware.js";
+import { protect, admin } from "../middleware/authmiddleware.js";
 import Wedding from "./../models/weddingModel.js";
 import { upload } from "../config/cloudinary.js";
 
